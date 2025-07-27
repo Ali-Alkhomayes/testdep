@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text
+import os
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -36,6 +37,21 @@ def login():
             session['user'] = user.username
             return redirect(url_for('index'))
     return render_template('login.html')
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        role = request.form['role']
+        existing_user = User.query.filter_by(username=username).first()
+        if existing_user:
+            return '❌ Username already exists'
+        new_user = User(username=username, password=password, role=role)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('login'))
+    return render_template('signup.html')
 
 @app.route('/logout')
 def logout():
