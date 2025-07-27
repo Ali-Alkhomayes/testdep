@@ -6,9 +6,12 @@
     <script src="https://cdn.jsdelivr.net/npm/daisyui"></script>
 </head>
 <body class="bg-base-200 min-h-screen flex flex-col">
-    <header class="navbar bg-red-600 text-white shadow">
+    <!-- Header -->
+    <header class="navbar bg-primary text-primary-content">
         <div class="flex-1 px-2 text-xl font-bold">MyApp</div>
     </header>
+
+    <!-- Main Content -->
     <main class="flex-grow flex items-center justify-center">
         <form method="POST" action="/login" class="p-6 bg-white rounded shadow w-80">
             <h2 class="text-2xl font-bold mb-4">Login</h2>
@@ -17,7 +20,9 @@
             <button type="submit" class="btn btn-primary w-full">Login</button>
         </form>
     </main>
-    <footer class="footer p-4 bg-blue-700 text-white text-center shadow">
+
+    <!-- Footer -->
+    <footer class="footer p-4 bg-neutral text-neutral-content text-center">
         <div class="w-full">© 2025 MyApp. All rights reserved.</div>
     </footer>
 </body>
